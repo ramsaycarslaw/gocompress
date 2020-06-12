@@ -2,9 +2,10 @@ package gocompress
 
 import (
 	"errors"
-	"gocompress/dict"
-	"gocompress/utils"
-	"gocompress/whitespace"
+
+	"github.com/ramsaycarslaw/gocompress/dict"
+	"github.com/ramsaycarslaw/gocompress/utils"
+	"github.com/ramsaycarslaw/gocompress/whitespace"
 )
 
 // Compressor is the main struct used to perform compression
@@ -33,7 +34,7 @@ func (c *Compressor) Compress() error {
 	result, m := dict.DictionaryCompression(result)
 	c.DictKey = m
 
-	err = utils.WriteFile(result, c.Filename+".cmp")
+	err = utils.WriteCompressed(result, c.Filename, c.DictKey)
 	if err != nil {
 		return errors.New("Error writing to new file with error: " + err.Error())
 	}
@@ -43,12 +44,12 @@ func (c *Compressor) Compress() error {
 
 // Decompress undoes the compression
 func (c *Compressor) Decompress() error {
-	out, err := utils.LoadFile(c.Filename + ".cmp")
+	s, err := utils.LoadCompressed(c.Filename, &c.DictKey)
 	if err != nil {
 		return errors.New("Error reading file: " + c.Filename + ".cmp" + " with error: " + err.Error())
 	}
 
-	result, err := dict.DictionaryDecompression(out, c.DictKey)
+	result, err := dict.DictionaryDecompression(s, c.DictKey)
 	if err != nil {
 		return errors.New("Error reversing dict compression: " + err.Error())
 	}
