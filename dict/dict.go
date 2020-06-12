@@ -1,3 +1,5 @@
+// Copyright (C) 2020 Ramsay Carslaw
+
 package dict
 
 import (

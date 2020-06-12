@@ -1,4 +1,4 @@
-# Golang Compression
+# Gol Compression
 
 This package allows for the compression of text from golang with comparable size reduction to gzip
 
@@ -7,7 +7,7 @@ This package allows for the compression of text from golang with comparable size
 The package can be installed with the following
 
 ```
-go get github.com/ramsaycarslaw/compression
+go get github.com/ramsaycarslaw/gocompress
 ```
 
 ## Usage
@@ -18,13 +18,14 @@ To create a simple command line tool to compress then decompress a file
 package main
 
 import (
-	"cmp/compression"
 	"log"
 	"os"
+
+	github.com/ramsaycarslaw/gocompress
 )
 
 func main() {
-	var c = compression.NewCompressor(os.Args[1])
+	var c = gocompress.NewCompressor(os.Args[1])
 
 	err := c.Compress()
 	if err != nil {
@@ -41,7 +42,7 @@ func main() {
 And then run it with
 
 ```
-./compression file.txt
+./compression path/to/file.txt
 ```
 
-This will create a new file called file.txt.cmp which is the compressed file
+This will create a folder in the path called file.txt.fldr, inside of this is the compressed file and the keystore for the dictionary compression
