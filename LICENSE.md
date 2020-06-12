@@ -1,5 +1,5 @@
-    # gocompress - a simple library to compress files from go
-    ## Copyright (C) 2020 Ramsay Carslaw
+    gocompress - a simple library to compress files from go
+    Copyright (C) 2020 Ramsay Carslaw
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

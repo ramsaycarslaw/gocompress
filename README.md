@@ -1,4 +1,4 @@
-# Gol Compression
+# Go Compression
 
 This package allows for the compression of text from golang with comparable size reduction to gzip
 
